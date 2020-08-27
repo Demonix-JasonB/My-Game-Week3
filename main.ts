@@ -86,6 +86,7 @@ function Createball7 () {
     ball7.setFlag(SpriteFlag.BounceOnWall, true)
 }
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
+    music.pewPew.playUntilDone()
     mySprite2 = sprites.create(img`
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
@@ -322,6 +323,7 @@ sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, oth
         . . . . . . . . . . . . . . . . . . . . 
         `, SpriteKind.Enemy)
     enemy1.setPosition(randint(0, 160), randint(0, 160))
+    music.changeTempoBy(20)
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.ball, function (sprite, otherSprite) {
     game.over(false)
