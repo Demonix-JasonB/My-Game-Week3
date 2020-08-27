@@ -23,6 +23,7 @@ function Createball4 () {
     ball4.setVelocity(randint(-50, 50), randint(-50, 50))
     ball4.setFlag(SpriteFlag.BounceOnWall, true)
 }
+// These functions create the enemys and say that they are able to bounce off the walls
 function Createball () {
     ball = sprites.create(img`
         . . . . . . . . . . . . . . . 
@@ -44,6 +45,7 @@ function Createball () {
     ball.setVelocity(randint(-50, 50), randint(-50, 50))
     ball.setFlag(SpriteFlag.BounceOnWall, true)
 }
+// creates objective
 function Createball9 () {
     enemy1 = sprites.create(img`
         . . . . . . . . . . . . . . . . . . . . 
@@ -85,6 +87,7 @@ function Createball7 () {
     ball7.setVelocity(randint(-50, 50), randint(-50, 50))
     ball7.setFlag(SpriteFlag.BounceOnWall, true)
 }
+// on button, it will shot 4 lasers, 1 in each direction
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     music.pewPew.playUntilDone()
     mySprite2 = sprites.create(img`
@@ -210,6 +213,7 @@ function Createball8 () {
     ball8.setVelocity(randint(-50, 50), randint(-50, 50))
     ball8.setFlag(SpriteFlag.BounceOnWall, true)
 }
+// this function creates the player
 function createplayer () {
     mySprite = sprites.create(img`
         . . . . . . . . . . . . . . . . 
@@ -233,8 +237,9 @@ function createplayer () {
     mySprite.setPosition(160, 0)
     controller.moveSprite(mySprite)
 }
+// says that if you reach 1k score, you win
 function doSomething () {
-    if (info.player2.score() >= 1000) {
+    if (info.player1.score() >= 1000) {
         game.over(true)
     }
 }
@@ -301,6 +306,7 @@ function Createball2 () {
     ball2.setVelocity(randint(-50, 50), randint(-50, 50))
     ball2.setFlag(SpriteFlag.BounceOnWall, true)
 }
+// when the laser hits the resistor, it will destroy it and make a new one in a random location
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, otherSprite) {
     info.changeScoreBy(100)
     enemy1.destroy(effects.halo, 500)
@@ -325,9 +331,11 @@ sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, oth
     enemy1.setPosition(randint(0, 160), randint(0, 160))
     music.changeTempoBy(20)
 })
+// says that if a microchip touches you, you will lose
 sprites.onOverlap(SpriteKind.Player, SpriteKind.ball, function (sprite, otherSprite) {
     game.over(false)
 })
+// sets up score, lives, and calls the functions
 let ball2: Sprite = null
 let ball3: Sprite = null
 let ball6: Sprite = null
@@ -354,6 +362,7 @@ Createball7()
 Createball8()
 Createball9()
 createplayer()
+// adds music
 forever(function () {
     music.playMelody("C5 B A C5 G B A C5 ", 120)
     music.playMelody("A F B G A G G A ", 120)
