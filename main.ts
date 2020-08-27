@@ -353,5 +353,11 @@ Createball8()
 Createball9()
 createplayer()
 forever(function () {
+    music.playMelody("C5 B A C5 G B A C5 ", 120)
+    music.playMelody("A F B G A G G A ", 120)
+    music.playMelody("F G E A G F D A ", 120)
+    music.playMelody("F G A B G B E A ", 120)
+})
+forever(function () {
     doSomething()
 })
