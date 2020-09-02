@@ -210,7 +210,7 @@ function Createball8 () {
         . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . 
         `, SpriteKind.ball)
-    ball8.setVelocity(randint(-50, 50), randint(-50, 50))
+    ball8.setVelocity(randint(-50, 50), 30)
     ball8.setFlag(SpriteFlag.BounceOnWall, true)
 }
 // this function creates the player
@@ -239,8 +239,15 @@ function createplayer () {
 }
 // says that if you reach 1k score, you win
 function doSomething () {
-    if (info.player1.score() >= 1000) {
-        game.over(true)
+    if (info.player1.score() == 1000) {
+        ball.destroy()
+        ball2.destroy()
+        ball3.destroy()
+        ball4.destroy()
+        ball5.destroy()
+        ball6.destroy()
+        ball7.destroy()
+        ball8.destroy()
     }
 }
 function Createball6 () {
@@ -336,9 +343,9 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.ball, function (sprite, otherSpr
     game.over(false)
 })
 // sets up score, lives, and calls the functions
-let ball2: Sprite = null
-let ball3: Sprite = null
 let ball6: Sprite = null
+let ball3: Sprite = null
+let ball2: Sprite = null
 let ball8: Sprite = null
 let ball5: Sprite = null
 let mysprite5: Sprite = null
